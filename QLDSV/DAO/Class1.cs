@@ -8,5 +8,6 @@ namespace DAO
 {
     internal class Class1
     {
+      private string masv { get; set; }   
     }
 }
