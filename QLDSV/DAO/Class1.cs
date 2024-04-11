@@ -8,5 +8,6 @@ namespace DAO
 {
     internal class Class1
     {
+        public int id { get ; set; }
     }
 }
