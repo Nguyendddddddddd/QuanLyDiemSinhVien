@@ -8,6 +8,10 @@ namespace DAO
 {
     internal class Class1
     {
-      private string masv { get; set; }   
+
+        private string masv { get; set; }   
+
+        public int id { get ; set; }
+
     }
 }
