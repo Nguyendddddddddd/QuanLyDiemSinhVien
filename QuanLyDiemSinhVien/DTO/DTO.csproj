@@ -114,6 +114,7 @@
     <Compile Include="TaiKhoang.cs">
       <DependentUpon>QLDiemSinhVien.tt</DependentUpon>
     </Compile>
+    <Compile Include="text.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -15,11 +15,21 @@ namespace DTO
     
     public partial class QLDiemSinhVien : DbContext
     {
-        public QLDiemSinhVien()
+        private static QLDiemSinhVien instance;
+        private QLDiemSinhVien()
             : base("name=QLDiemSinhVien")
         {
         }
-    
+        public static QLDiemSinhVien getInstance()
+        {
+            if(instance == null)
+            {
+                instance = new QLDiemSinhVien();
+            }
+            return instance;
+        }
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
