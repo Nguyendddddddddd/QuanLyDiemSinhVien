@@ -65,5 +65,16 @@ namespace GUI
         {
             loadDataGridView();
         }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            Khoa k = new Khoa()
+            {
+                MaKhoa = txtMaKhoa.Text,
+                TenKhoa = txtTenKhoa.Text,
+            };
+            KhoaBUS.update(k.MaKhoa,k);
+            loadDataGridView();
+        }
     }
 }
