@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DTO;
+
 namespace GUI
 {
     public partial class FormMain : Form
@@ -17,10 +17,18 @@ namespace GUI
             InitializeComponent();
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
+        private void sinhVienToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var QlDiemSV = QLDiemSinhVien.getInstance();
-            dataGridView1.DataSource = QlDiemSV.SinhViens.ToList();
+            FormSinhVien fSinhVien = new FormSinhVien();
+            fSinhVien.MdiParent = this;
+            fSinhVien.Show();
+        }
+
+        private void khoaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormKhoa fKhoa= new FormKhoa();
+            fKhoa.MdiParent = this;
+            fKhoa.Show();
         }
     }
 }
