@@ -1,6 +1,7 @@
 ﻿using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,23 +25,48 @@ namespace DAO
         }
         public static bool insert(Khoa k)
         {
-            QLDiemSinhVien.getInstance().Khoas.Add(k);
-            int sl = QLDiemSinhVien.getInstance().SaveChanges();
-            return sl > 0;
+            try
+            {
+                QLDiemSinhVien.getInstance().Khoas.Add(k);
+                int sl = QLDiemSinhVien.getInstance().SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
         }
         public static bool delete(string maKhoa)
         {
-            QLDiemSinhVien.getInstance().Khoas.Remove(selectByID(maKhoa));
-            int sl = QLDiemSinhVien.getInstance().SaveChanges();
-            return sl > 0;
+            try
+            {
+                QLDiemSinhVien.getInstance().Khoas.Remove(selectByID(maKhoa));
+                int sl = QLDiemSinhVien.getInstance().SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
         }
         public static bool update(string maKhoa, Khoa Khoa)
         {
-            var k = selectByID(maKhoa);
-            if (k != null)
+            try
             {
-                k.TenKhoa = Khoa.TenKhoa;
+                var k = selectByID(maKhoa);
+                if (k != null)
+                {
+                    k.TenKhoa = Khoa.TenKhoa;
+                }
+            }catch(Exception ex)
+            {
+                return false;
             }
+            return true;
+            
+        }
+        public static bool save()
+        {
             int sl = QLDiemSinhVien.getInstance().SaveChanges();
             return sl > 0;
         }

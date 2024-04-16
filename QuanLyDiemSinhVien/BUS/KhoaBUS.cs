@@ -33,5 +33,9 @@ namespace BUS
            
             return KhoaDAO.update(maKhoa, Khoa);
         }
+        public static bool save()
+        {
+            return KhoaDAO.save();
+        }
     }
 }

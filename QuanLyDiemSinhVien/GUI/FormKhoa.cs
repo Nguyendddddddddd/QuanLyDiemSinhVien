@@ -68,6 +68,12 @@ namespace GUI
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            string maKhoa = dgvKhoa.Rows[indexDgvKhoa].Cells["clMaKhoa"].Value.ToString();
+            if(maKhoa != txtMaKhoa.Text) {
+                MessageBox.Show("Không được sửa mã khoa", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                txtMaKhoa.Text = maKhoa;
+                return;
+            }
             Khoa k = new Khoa()
             {
                 MaKhoa = txtMaKhoa.Text,
@@ -75,6 +81,11 @@ namespace GUI
             };
             KhoaBUS.update(k.MaKhoa,k);
             loadDataGridView();
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

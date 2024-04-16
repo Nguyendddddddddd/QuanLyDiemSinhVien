@@ -12,6 +12,7 @@ namespace GUI
 {
     public partial class FormMain : Form
     {
+        private Form formHienTai;
         public FormMain()
         {
             InitializeComponent();
@@ -29,6 +30,27 @@ namespace GUI
             FormKhoa fKhoa= new FormKhoa();
             fKhoa.MdiParent = this;
             fKhoa.Show();
+        }
+        private void openChillForm(Form chillForm)
+        {
+            if (formHienTai != null)
+            {
+                formHienTai.Hide();
+            }
+
+            formHienTai = chillForm;
+            chillForm.TopLevel = false;
+            chillForm.FormBorderStyle = FormBorderStyle.None;
+            chillForm.Dock = DockStyle.Fill;
+            pnlMain.Controls.Add(chillForm);
+            pnlMain.Tag = chillForm;
+            pnlMain.BringToFront();
+            chillForm.Show();
+        }
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            FormKhoa fKhoa = new FormKhoa();
+            openChillForm(fKhoa);
         }
     }
 }
